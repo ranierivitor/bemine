@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bemine Split — Plano de Março 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0f0e0c;
+  --paper: #f5f2ed;
+  --cream: #ede9e1;
+  --accent: #c8392b;
+  --gold: #b8922a;
+  --muted: #7a7568;
+  --border: #d8d3c8;
+  --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: 'Epilogue', sans-serif; font-weight: 400; line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+header { padding: 80px 0 60px; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+header::before { content: ''; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(200,57,43,.06) 0%, transparent 70%); pointer-events: none; }
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: block; }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 6vw, 68px); font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; color: var(--ink); max-width: 760px; margin: 0 auto 24px; }
+h1 em { font-style: italic; color: var(--accent); }
+.header-sub { font-size: 17px; color: var(--muted); max-width: 480px; margin: 0 auto; font-weight: 300; line-height: 1.6; }
+
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+
+section { padding: 72px 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(28px); transition: opacity .55s ease, transform .55s ease; }
+section.visible { opacity: 1; transform: none; }
+section:last-of-type { border-bottom: none; }
+
+.sec-label { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -.5px; line-height: 1.15; margin-bottom: 20px; color: var(--ink); }
+h2 em { font-style: italic; color: var(--accent); }
+h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; letter-spacing: -.3px; margin: 40px 0 12px; color: var(--ink); }
+h3 em { font-style: italic; color: var(--accent); }
+p { color: var(--muted); font-size: 15.5px; line-height: 1.75; max-width: 620px; }
+p + p { margin-top: 14px; }
+strong { color: var(--ink); font-weight: 600; }
+
+.pullquote { border-left: 3px solid var(--accent); padding: 16px 0 16px 28px; margin: 32px 0; }
+.pullquote p { font-family: 'Playfair Display', serif; font-size: 19px; font-style: italic; color: var(--ink); line-height: 1.5; max-width: none; }
+
+/* numbers */
+.numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 36px 0; }
+.num-cell { background: var(--white); padding: 26px 20px; text-align: center; }
+.num-val { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--accent); display: block; margin-bottom: 6px; }
+.num-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.num-sub { font-size: 11px; color: var(--muted); margin-top: 3px; display: block; font-weight: 300; }
+
+/* channel cards */
+.ch-hdr { display: grid; grid-template-columns: 1fr 80px 90px; padding: 0 0 8px; }
+.ch-hdr span { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+.ch-hdr span:nth-child(2), .ch-hdr span:nth-child(3) { text-align: center; }
+.channel { display: grid; grid-template-columns: 1fr 80px 90px; gap: 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 8px; background: var(--white); transition: box-shadow .15s; }
+.channel:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); }
+.ch-main { padding: 18px 20px; border-right: 1px solid var(--border); }
+.ch-num { padding: 18px 10px; text-align: center; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; }
+.ch-cost { padding: 18px 10px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+.ch-name { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ch-tag { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; white-space: nowrap; }
+.tag-r { background: rgba(200,57,43,.1); color: var(--accent); }
+.tag-b { background: rgba(37,99,235,.1); color: #2563eb; }
+.tag-g { background: rgba(22,160,106,.1); color: #16a06a; }
+.tag-y { background: rgba(184,146,42,.1); color: var(--gold); }
+.tag-p { background: rgba(124,58,237,.1); color: #7c3aed; }
+.ch-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+.ch-val { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1; display: block; margin-bottom: 3px; }
+.ch-meta { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; line-height: 1.3; }
+
+/* detail cards */
+.detail-card { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; margin-bottom: 10px; }
+.detail-card + .detail-card { margin-top: 0; }
+.dc-title { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.dc-body { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+.dc-body p { font-size: 13.5px; max-width: none; margin-top: 6px; }
+.dc-body p:first-child { margin-top: 0; }
+
+/* journey */
+.journey { display: flex; gap: 0; margin: 20px 0 0; position: relative; }
+.journey::before { content: ''; position: absolute; top: 16px; left: 16px; right: 16px; height: 1px; background: var(--border); z-index: 0; }
+.j-step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 6px; }
+.j-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin: 0 auto 8px; border: 2px solid var(--paper); box-shadow: 0 0 0 1px var(--accent); }
+.j-dot.muted { background: var(--border); box-shadow: 0 0 0 1px var(--border); }
+.j-label { font-size: 10px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; color: var(--ink); margin-bottom: 3px; }
+.j-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+/* ads grid */
+.ads-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.ads-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 16px 18px; }
+.ads-card-title { font-size: 12px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
+.ads-card-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+.ads-split { display: flex; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-top: 20px; }
+.ads-split-cell { flex: 1; background: var(--white); padding: 14px 16px; text-align: center; }
+.ads-split-val { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--accent); display: block; }
+.ads-split-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 600; }
+
+/* budget */
+.budget-bar { margin: 28px 0; background: var(--cream); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.budget-row { display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--border); }
+.budget-row:last-child { border-bottom: none; }
+.budget-name { font-size: 13px; font-weight: 600; color: var(--ink); min-width: 150px; }
+.budget-track { flex: 1; height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.budget-fill { height: 100%; border-radius: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .9s cubic-bezier(.16,1,.3,1); }
+.budget-fill.green { background: #16a06a; }
+section.visible .budget-fill { transform: scaleX(var(--w)); }
+.budget-amount { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--ink); min-width: 60px; text-align: right; }
+.budget-pct { font-size: 11px; color: var(--muted); min-width: 32px; text-align: right; }
+
+/* milestones */
+.milestone { display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.milestone:last-child { border-bottom: none; }
+.ms-date { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: var(--accent); min-width: 64px; padding-top: 2px; }
+.ms-body { flex: 1; }
+.ms-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.ms-sub { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.ms-pivot { font-size: 11px; margin-top: 6px; color: var(--gold); font-weight: 600; letter-spacing: .2px; }
+
+/* learn grid */
+.learn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 28px; }
+.learn-item { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 14px 16px; font-size: 13.5px; font-weight: 500; color: var(--ink); line-height: 1.5; }
+.learn-item::before { content: '→'; color: var(--accent); margin-right: 8px; font-weight: 700; }
+
+footer { padding: 48px 0 64px; text-align: center; }
+.footer-mark { font-family: 'Playfair Display', serif; font-size: 13px; font-style: italic; color: var(--muted); }
+
+/* divider */
+.divider { height: 1px; background: var(--border); margin: 32px 0; }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+header .eyebrow { animation: slideUp .5s ease both; }
+header h1 { animation: slideUp .6s .1s ease both; }
+header .header-sub { animation: slideUp .6s .2s ease both; }
+
+/* ── EDITABLE ── */
+[contenteditable="true"] { outline: none; border-radius: 3px; cursor: text; transition: background .15s; }
+[contenteditable="true"]:hover { background: rgba(184,146,42,.08); }
+[contenteditable="true"]:focus { background: rgba(184,146,42,.13); box-shadow: 0 0 0 1.5px var(--gold); }
+
+/* toast */
+#edit-toast { position: fixed; bottom: 20px; right: 20px; background: var(--ink); color: var(--paper); font-family: 'Epilogue', sans-serif; font-size: 11px; letter-spacing: .5px; padding: 7px 14px; border-radius: 3px; opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 999; }
+#edit-toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">Bemine Split · GTM Março 2026</span>
+  <h1>22 dias.<br>5 canais.<br><em>15 contratos.</em></h1>
+  <p class="header-sub">Execução começa em 9/mar. $6.000 investidos. Uma hipótese para provar — e um manual para escalar em abril.</p>
+</header>
+
+<!-- 01 PROBLEMA -->
+<section>
+  <span class="sec-label">01 — O problema</span>
+  <h2>O brasileiro nos EUA<br>não consegue <em>parcelar.</em></h2>
+  <p>AT&T, Verizon, Apple, Katapult — todos exigem SSN e análise de crédito americano. Para quem chegou recentemente, esse crédito não existe. A única opção até hoje era pagar à vista ou continuar com celular velho.</p>
+  <div class="pullquote">
+    <p>"A Bemine não vende iPhone. Vende o parcelamento que ninguém oferecia."</p>
+  </div>
+  <p>O que o cliente precisa ter: <strong>passaporte válido + 3 extratos bancários</strong>. Só isso. Sem burocracia, sem crédito americano, sem SSN.</p>
+</section>
+
+<!-- 02 A APOSTA -->
+<section>
+  <span class="sec-label">02 — A aposta</span>
+  <h2>Por que março<br>é o <em>momento certo.</em></h2>
+  <p>O mercado existe e não tem concorrente direto. Nenhuma empresa estruturada parcela iPhone para o brasileiro nos EUA com passaporte. Essa janela não fica aberta para sempre.</p>
+  <p>Março não é o mês de escalar — é o mês de <strong>validar o modelo</strong>. A meta de 15 contratos em 22 dias de execução é o mínimo para responder as perguntas que nenhuma pesquisa responderia: qual canal converte, qual perfil fecha, quanto custa cada contrato na prática.</p>
+  <div class="numbers">
+    <div class="num-cell">
+      <span class="num-val">15</span>
+      <span class="num-label">Contratos</span>
+      <span class="num-sub">9 a 31/mar</span>
+    </div>
+    <div class="num-cell">
+      <span class="num-val">$6k</span>
+      <span class="num-label">Budget</span>
+      <span class="num-sub">ads + influencers</span>
+    </div>
+    <div class="num-cell">
+      <span class="num-val">22</span>
+      <span class="num-label">Dias úteis</span>
+      <span class="num-sub">execução real</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CANAIS -->
+<section>
+  <span class="sec-label">03 — Os canais</span>
+  <h2>5 apostas.<br><em>Papéis distintos.</em></h2>
+  <p>Cada canal tem um papel específico na jornada. Afiliados trazem confiança humana. Ads trazem volume. Influencers criam prova social autêntica. Grupos e social aquecem e sustentam ao longo do mês. Os canais se reforçam — um contrato real vira conteúdo, que gera mais leads.</p>
+
+  <div style="margin-top:32px">
+    <div class="ch-hdr"><span>Canal</span><span>Meta</span><span>Custo</span></div>
+
+    <div class="channel">
+      <div class="ch-main">
+        <div class="ch-name"><span class="ch-tag tag-g">Principal</span>Afiliados</div>
+        <div class="ch-desc">Rede humana de revendedores que ganham comissão por contrato fechado. Maior taxa de conversão esperada — confiança já existe antes do pitch.</div>
+      </div>
+      <div class="ch-num"><span class="ch-val">5–6</span><span class="ch-meta">contratos</span></div>
+      <div class="ch-cost"><span class="ch-val" style="font-size:13px;color:var(--muted)">comissão</span><span class="ch-meta">por contrato</span></div>
+    </div>
+
+    <div class="channel">
+      <div class="ch-main">
+        <div class="ch-name"><span class="ch-tag tag-b">Pago</span>Meta Ads</div>
+        <div class="ch-desc">3 ângulos testados na semana 1. Budget concentra no criativo vencedor a partir do dia 4. Mix de oferta direta e material rico.</div>
+      </div>
+      <div class="ch-num"><span class="ch-val">3–4</span><span class="ch-meta">contratos</span></div>
+      <div class="ch-cost"><span class="ch-val">$5k</span><span class="ch-meta">budget</span></div>
+    </div>
+
+    <div class="channel">
+      <div class="ch-main">
+        <div class="ch-name"><span class="ch-tag tag-p">Híbrido</span>Nano-influencers</div>
+        <div class="ch-desc">Fee por post + comissão por contrato. Criam UGC com voz própria — parece orgânico, não jabá. Identidade de imigrante presente no conteúdo deles.</div>
+      </div>
+      <div class="ch-num"><span class="ch-val">2–3</span><span class="ch-meta">contratos</span></div>
+      <div class="ch-cost"><span class="ch-val">$1k</span><span class="ch-meta">budget</span></div>
+    </div>
+
+    <div class="channel">
+      <div class="ch-main">
+        <div class="ch-name"><span class="ch-tag tag-y">Orgânico</span>WhatsApp & Grupos</div>
+        <div class="ch-desc">Grupos de brasileiros em FL e MA. Linguagem de comunidade — nunca de venda direta. Scripts prontos, Jady opera.</div>
+      </div>
+      <div class="ch-num"><span class="ch-val">2–3</span><span class="ch-meta">contratos</span></div>
+      <div class="ch-cost"><span class="ch-val" style="font-size:13px;color:var(--muted)">$0</span><span class="ch-meta">custo</span></div>
+    </div>
+
+    <div class="channel">
+      <div class="ch-main">
+        <div class="ch-name"><span class="ch-tag tag-r">Social</span>Instagram & TikTok</div>
+        <div class="ch-desc">Unboxings reais, histórias de imigrantes, conteúdo educacional. Constrói confiança ao longo do mês. Primeiro unboxing em 17/mar é o marco de prova social.</div>
+      </div>
+      <div class="ch-num"><span class="ch-val">1–2</span><span class="ch-meta">contratos</span></div>
+      <div class="ch-cost"><span class="ch-val" style="font-size:13px;color:var(--muted)">$0</span><span class="ch-meta">custo</span></div>
+    </div>
+  </div>
+
+  <!-- AFILIADOS DETAIL -->
+  <h3>Afiliados — <em>quem são.</em></h3>
+  <p>Afiliado ideal: alguém que já tem acesso cotidiano a brasileiros que precisam do produto mas ainda não sabem que a Bemine existe. São 5 perfis principais:</p>
+
+  <div style="margin-top:20px">
+    <div class="detail-card">
+      <div class="dc-title"><span class="ch-tag tag-g">P1</span>Agências de construção civil</div>
+      <div class="dc-body">
+        <p>Framingham, Marlborough, Everett (MA) e Doral, Hialeah (FL). Donos e supervisores de turma têm relação diária com trabalhadores recém-chegados. A proposta é simples: cada trabalhador que fechar pelo link do agenciador rende comissão no mesmo dia. Para o agenciador, é renda extra sem nenhum custo. Para o trabalhador, é acesso a algo que ele não saberia buscar sozinho.</p>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <div class="dc-title"><span class="ch-tag tag-g">P1</span>Empresas de cleaning & housekeeping</div>
+      <div class="dc-body">
+        <p>Mesmo perfil da construção, mas com audiência ainda mais feminina. Donas de empresa de cleaning conhecem as funcionárias pelo nome, sabem das dificuldades financeiras, e têm autoridade natural. Uma mensagem no grupo da empresa já chega para 10–30 pessoas.</p>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <div class="dc-title"><span class="ch-tag tag-y">P2</span>Barbearias brasileiras</div>
+      <div class="dc-body">
+        <p>O barbeiro brasileiro nos EUA é um nó de informação da comunidade — todo mundo passa pela cadeira, toda semana. Framingham Center, Allston (MA), Little Brazil (FL). O flyer fica exposto na barbearia; o barbeiro menciona naturalmente durante o corte. Baixo esforço, alto alcance.</p>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <div class="dc-title"><span class="ch-tag tag-y">P2</span>Mercados e açougues brasileiros</div>
+      <div class="dc-body">
+        <p>Tropical Supermarket (FL), Brazilian Market (MA) e similares. O dono ou funcionário de caixa pode mencionar para clientes que comentam sobre celular ou tecnologia. Flyer no balcão + QR code já funcionam como canal passivo.</p>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <div class="dc-title"><span class="ch-tag tag-r">P3</span>Despachantes & cartórios de documentos</div>
+      <div class="dc-body">
+        <p>Quem resolve documentação de imigrante já lida com o perfil exato do cliente Bemine — recém-chegado, sem crédito americano, precisando estruturar a vida nos EUA. A sinergia é natural: quem está resolvendo visto, CNH, ITIN, provavelmente também precisa de celular novo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NANO INFLUENCERS DETAIL -->
+  <h3>Nano-influencers — <em>quem são e como atuam.</em></h3>
+  <p>Nano-influencers são brasileiros com <strong>500 a 8.000 seguidores</strong> que vivem nos EUA e produzem conteúdo sobre a realidade de imigrante — não sobre lifestyle, não sobre moda, não sobre viagem. São perfis como:</p>
+
+  <div class="detail-card" style="margin-top:20px">
+    <div class="dc-body">
+      <p><strong>O recém-chegado documentando a adaptação</strong> — "Semana 3 nos EUA, o que já aprendi". Audiência que chegou junto ou está chegando. Máxima identificação com a dificuldade de parcelar.</p>
+      <p><strong>A trabalhadora de cleaning ou nanny</strong> — fala sobre renda, custos, dicas práticas de vida nos EUA. Audiência feminina, trabalhadora, com poder de compra real e frustração com burocracia americana.</p>
+      <p><strong>O cara da construção ou do trade</strong> — eletricista, pintor, pedreiro brasileiro. Fala sobre trabalho, salário, vida prática. Audiência masculina, jovem, com renda e sem crédito americano.</p>
+      <p><strong>A influenciadora de "dicas para brasileiros nos EUA"</strong> — conteúdo educacional sobre moradia, banco, celular, seguro. A Bemine encaixa naturalmente no conteúdo dela sem parecer patrocínio forçado.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:20px">Critérios de seleção: engajamento real acima de 3%, postou nos últimos 14 dias, ao menos 30% da audiência em FL ou MA.</p>
+
+  <h3 style="margin-top:36px">Jornada do nano-influencer</h3>
+
+  <div class="journey">
+    <div class="j-step">
+      <div class="j-dot"></div>
+      <div class="j-label">Prospecção</div>
+      <div class="j-sub">Vitor mapeia via #brasileiroseua e similares</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot"></div>
+      <div class="j-label">Proposta</div>
+      <div class="j-sub">Fee fixo por post + comissão por contrato fechado</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot"></div>
+      <div class="j-label">Briefing</div>
+      <div class="j-sub">4 editorias sugeridas — voz livre, não roteirizado</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot"></div>
+      <div class="j-label">Post</div>
+      <div class="j-sub">Reel ou carrossel com link de afiliado no bio</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot"></div>
+      <div class="j-label">Conversão</div>
+      <div class="j-sub">Lead vai ao DM da Bemine, Jady fecha o contrato</div>
+    </div>
+  </div>
+
+  <p style="margin-top:24px">O modelo híbrido (fee + comissão) serve dois perfis: quem quer garantia de pagamento independente de conversão, e quem quer maximizar ganhos se o conteúdo performar bem. O $1.000 de budget cobre o fee de 3–4 influencers, com comissão adicional sobre contratos gerados.</p>
+
+  <!-- ADS DETAIL -->
+  <h3>Meta Ads — <em>estrutura da campanha.</em></h3>
+  <p>Os $5.000 rodam em duas fases. Semana 1: teste com 3 ângulos em paralelo. A partir do 4º dia: budget concentrado no criativo com menor CPL.</p>
+
+  <div class="ads-grid">
+    <div class="ads-card">
+      <div class="ads-card-title">Ângulo A — Oferta direta</div>
+      <div class="ads-card-desc">Headline: "Passaporte + extrato = iPhone parcelado." CTA para DM ou WhatsApp. Mais rápido de converter — funciona para quem já tem intenção de compra.</div>
+    </div>
+    <div class="ads-card">
+      <div class="ads-card-title">Ângulo B — Comunidade</div>
+      <div class="ads-card-desc">"Você trabalha duro aqui. Merece iPhone novo." Tom de pertencimento. Funciona para audiência fria — gera identificação antes do pitch.</div>
+    </div>
+    <div class="ads-card">
+      <div class="ads-card-title">Ângulo C — Material rico</div>
+      <div class="ads-card-desc">Isca de conteúdo: guia ou planilha gratuita ("como abrir conta bancária nos EUA"). Captura lead qualificado antes de fazer a oferta.</div>
+    </div>
+    <div class="ads-card">
+      <div class="ads-card-title">Funil único</div>
+      <div class="ads-card-desc">Todos os ângulos fecham no mesmo lugar: DM do Instagram ou link de WhatsApp. Sem landing page complexa — Jady qualifica e converte na conversa.</div>
+    </div>
+  </div>
+
+  <div class="ads-split">
+    <div class="ads-split-cell"><span class="ads-split-val">$3k</span><span class="ads-split-label">Semana 1–2 (teste)</span></div>
+    <div class="ads-split-cell"><span class="ads-split-val">$2k</span><span class="ads-split-label">Semana 3–4 (escala)</span></div>
+  </div>
+</section>
+
+<!-- 04 DINHEIRO -->
+<section>
+  <span class="sec-label">04 — O investimento</span>
+  <h2>$6.000.<br><em>Onde vai cada dólar.</em></h2>
+  <p>Budget total de <strong>$6.000</strong> — $5.000 em Meta Ads e $1.000 em nano-influencers. Afiliados, grupos e social têm custo zero fixo. O CAC real de cada canal é calculado ao final de março e alimenta o plano de abril.</p>
+
+  <div class="budget-bar">
+    <div class="budget-row">
+      <span class="budget-name">Meta Ads</span>
+      <div class="budget-track"><div class="budget-fill" style="--w:.833"></div></div>
+      <span class="budget-amount">$5.000</span>
+      <span class="budget-pct">83%</span>
+    </div>
+    <div class="budget-row">
+      <span class="budget-name">Nano-influencers</span>
+      <div class="budget-track"><div class="budget-fill green" style="--w:.167"></div></div>
+      <span class="budget-amount">$1.000</span>
+      <span class="budget-pct">17%</span>
+    </div>
+    <div class="budget-row" style="background:var(--paper)">
+      <span class="budget-name" style="color:var(--muted);font-weight:400">Afiliados · Grupos · Social</span>
+      <div class="budget-track"></div>
+      <span class="budget-amount" style="color:var(--muted);font-family:'Epilogue'">$0</span>
+      <span class="budget-pct" style="color:var(--muted)">—</span>
+    </div>
+  </div>
+
+  <p style="font-size:13px">Se março fechar 15 contratos a $37/semana por 60 meses, o LTV total gerado é <strong>~$33.000</strong>. O investimento de $6.000 representa 18% desse valor — em um mês de validação, não de escala.</p>
+</section>
+
+<!-- 05 MARCOS -->
+<section>
+  <span class="sec-label">05 — Os marcos</span>
+  <h2>Três datas.<br><em>Três decisões.</em></h2>
+  <p>Março tem pontos de verificação explícitos. Em cada um há uma pergunta simples: está no caminho ou precisa pivotar? O plano só muda se os dados indicarem.</p>
+
+  <div style="margin-top:32px">
+    <div class="milestone">
+      <span class="ms-date">17/mar</span>
+      <div class="ms-body">
+        <div class="ms-title">5 contratos + primeiro unboxing publicado</div>
+        <div class="ms-sub">Afiliados rodando, Meta Ads com criativo vencedor definido, primeiro cliente filmado recebendo o iPhone. Esse conteúdo é a prova social que alimenta o restante do mês.</div>
+        <div class="ms-pivot">Se não atingido → revisar scripts de grupos + redistribuir budget de Ads</div>
+      </div>
+    </div>
+    <div class="milestone">
+      <span class="ms-date">24/mar</span>
+      <div class="ms-body">
+        <div class="ms-title">10 contratos assinados</div>
+        <div class="ms-sub">Nano-influencer principal já postou. Depoimento real de cliente no ar. Afiliados com 2ª semana completa de operação.</div>
+        <div class="ms-pivot">Se não atingido → ativar indicação cliente-a-cliente + concentrar budget restante no canal de melhor CAC</div>
+      </div>
+    </div>
+    <div class="milestone">
+      <span class="ms-date">31/mar</span>
+      <div class="ms-body">
+        <div class="ms-title">15 contratos + relatório de aprendizados</div>
+        <div class="ms-sub">Documentar CAC real por canal, perfil que fechou mais rápido, objeção mais frequente e argumento que converteu. Esses dados constroem o GTM de abril.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 APRENDIZADOS -->
+<section>
+  <span class="sec-label">06 — Por que isso importa</span>
+  <h2>O produto de março<br>é <em>informação.</em></h2>
+  <p>A meta de 15 contratos é a meta de execução. Mas o verdadeiro resultado de março é um manual: o que funciona, o que custa, quem compra. Cada contrato fechado responde uma pergunta que vai definir quanto investir em abril — e em quê.</p>
+
+  <div class="learn-grid">
+    <div class="learn-item">Qual canal tem menor CAC real?</div>
+    <div class="learn-item">Qual perfil de cliente fecha mais rápido?</div>
+    <div class="learn-item">Qual ângulo de Ads converteu melhor?</div>
+    <div class="learn-item">Qual objeção é mais comum — e qual script fecha?</div>
+    <div class="learn-item">Afiliados de qual nicho geram mais leads?</div>
+    <div class="learn-item">Material rico ou oferta direta — qual CPL é menor?</div>
+  </div>
+
+  <div class="pullquote" style="margin-top:40px">
+    <p>"Se tudo der certo, saímos com 15 clientes e um manual para escalar. Se um canal não funcionar, saímos sabendo onde não colocar dinheiro em abril."</p>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-mark">Bemine Split · Março 2026 · Vitor + Jady</p>
+</footer>
+
+</div>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.06 });
+document.querySelectorAll('section').forEach(s => io.observe(s));
+
+// ── UNIVERSAL EDITABLE ─────────────────────────────────────
+(function () {
+  const SKIP_TAGS = new Set(['SCRIPT','STYLE','NOSCRIPT','INPUT','BUTTON','SELECT','TEXTAREA','A']);
+  const SKIP_CLASSES = new Set(['j-dot']); // purely decorative elements
+
+  function canEdit(el) {
+    if (SKIP_TAGS.has(el.tagName)) return false;
+    if (el.hasAttribute('contenteditable')) return false;
+    for (const c of SKIP_CLASSES) if (el.classList.contains(c)) return false;
+    // Only touch leaf-ish nodes (no block children) with actual text
+    const blockTags = new Set(['DIV','SECTION','ARTICLE','HEADER','FOOTER','NAV','MAIN','ASIDE','TABLE','TBODY','THEAD','TFOOT','TR','UL','OL','FORM']);
+    const hasBlockChild = Array.from(el.children).some(c => blockTags.has(c.tagName));
+    if (hasBlockChild) return false;
+    return el.textContent.trim().length > 0;
+  }
+
+  function activate(el) {
+    if (canEdit(el)) el.setAttribute('contenteditable', 'true');
+  }
+
+  // Run on load
+  document.querySelectorAll('header *,section *,footer *').forEach(activate);
+
+  // Re-run on DOM mutations
+  new MutationObserver(ms => ms.forEach(m =>
+    m.addedNodes.forEach(n => {
+      if (n.nodeType === 1) { activate(n); n.querySelectorAll('*').forEach(activate); }
+    })
+  )).observe(document.body, { childList: true, subtree: true });
+
+  // Toast feedback
+  const toast = document.createElement('div');
+  toast.id = 'edit-toast';
+  toast.textContent = '✓ editado';
+  document.body.appendChild(toast);
+  let _t;
+  document.addEventListener('input', e => {
+    if (e.target.isContentEditable) {
+      toast.classList.add('show');
+      clearTimeout(_t);
+      _t = setTimeout(() => toast.classList.remove('show'), 1400);
+    }
+  });
+})();
+</script>
+</body>
+</html>
